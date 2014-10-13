@@ -18,6 +18,7 @@ A `go test` source file is included to verify the functionality of these functio
 The `secure` package `commands` folder includes the following commands utilizing Encrypt and Decrypt:
 * `wrap` - encryption
 * `unwrap` - decryption
+
 These are examples of the use of the functions exported by `secure`.  They are also safe commands for the secure encryption
 and decryption of single files.  The command switch -h provides a listing of the parameters of each command.
 
@@ -26,7 +27,7 @@ Requirements
 
 `secure` is a golang project.  Access golang at golang.org.
 
-`secure` uses the following go packages from sub-repositories not included in the base go environment.  They can be accessed with `go get`:
+`secure` uses the following go packages from sub-repositories not included in the base `go` development environment.  They can be accessed with `go get`:
 
 * "code.google.com/p/go.crypto/pbkdf2"
 * "code.google.com/p/go.crypto/hkdf"
