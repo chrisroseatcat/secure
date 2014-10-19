@@ -23,6 +23,7 @@ These are examples of the use of the functions exported by `secure`.  They are a
 and decryption of single files.  The command switch -h provides a listing of the parameters of each command.
 
 This is a pipeline example verifying the basic functionality of these commands:
+
 `ls -al | ./wrap -pw foo -stdin | ./unwrap -pw foo -stdin`
 
 Requirements
