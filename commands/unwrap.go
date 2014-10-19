@@ -7,9 +7,9 @@ import (
 	"code.google.com/p/gopass"
 	"flag"
 	"fmt"
+	"github.com/chrisroseatcat/secure"
 	"io/ioutil"
 	"os"
-	"secure"
 	"strings"
 )
 
