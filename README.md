@@ -13,7 +13,7 @@ The `secure` package exports the following functions:
 * `Decrypt` - secure decryption
 * `IsAuthError` - returns true if error returned by Decrypt is an authentication error
 
-A `go test` source file is included to verify the functionality of these functions.
+A `go test` source file is included to verify the correct operation of these functions.
 
 The `secure` package `commands` folder includes the following commands utilizing Encrypt and Decrypt:
 * `wrap` - encryption
@@ -21,6 +21,9 @@ The `secure` package `commands` folder includes the following commands utilizing
 
 These are examples of the use of the functions exported by `secure`.  They are also safe commands for the secure encryption
 and decryption of single files.  The command switch -h provides a listing of the parameters of each command.
+
+This is a pipeline example verifying the basic functionality of these commands:
+`ls -al | ./wrap -pw foo -stdin | ./unwrap -pw foo -stdin`
 
 Requirements
 ------------
