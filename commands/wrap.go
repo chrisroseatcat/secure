@@ -1,4 +1,4 @@
-// wrap performs secure encryption with password using the secure package.
+// The wrap command performs secure encryption with password using the secure package.
 // It reads from stdin or an input file and writes to stdout or an output file.
 package main
 

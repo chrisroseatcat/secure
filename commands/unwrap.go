@@ -1,4 +1,4 @@
-// unwrap decrypts data that has been encrypted with wrap secure encryption.
+// The unwrap command decrypts data that has been encrypted with wrap secure encryption.
 // It reads from stdin or an input file and writes to stdout or an output file.
 package main
 

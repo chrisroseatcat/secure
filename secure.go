@@ -8,7 +8,6 @@
 // correctly applying cryptographic principals.  As of 2014 it is still being taught periodically
 // and I highly recommend it.  Any errors or misunderstandings, of course, are solely my
 // responsibility.
-
 package secure
 
 import (
@@ -310,6 +309,7 @@ func expandKey(masterkey []byte, nonsecretsalt []byte, count int) (keys [][]byte
 	return keys, nil
 }
 
+// IsAuthError checks whether parameter is an Authentication Error.
 func IsAuthError(err error) bool {
 	return err == errAuthFailure
 }
@@ -430,7 +430,7 @@ func Encrypt(input []byte, password []byte) (output []byte, err error) {
 }
 
 // Decrypt checks MAC and then decrypts authenticated ciphertext
-func Decrypt(macedInput []byte, password []byte) ([]byte, error) {
+func Decrypt(macedInput []byte, password []byte) (plaintext []byte, err error) {
 
 	if len(macedInput) < 100 {
 		err := fmt.Errorf("Input to Decrypt has length %d.  Expected length of 100 or more.",
@@ -443,7 +443,7 @@ func Decrypt(macedInput []byte, password []byte) ([]byte, error) {
 	iterationsBytes := macedInput[len(macedInput)-68 : len(macedInput)-64]
 	var iterations uint32
 	buf := bytes.NewReader(iterationsBytes)
-	err := binary.Read(buf, binary.LittleEndian, &iterations)
+	err = binary.Read(buf, binary.LittleEndian, &iterations)
 	if err != nil {
 		fmt.Errorf("Read of iterations failed:", err)
 		return nil, err
