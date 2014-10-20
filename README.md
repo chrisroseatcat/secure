@@ -37,4 +37,10 @@ Requirements
 * "code.google.com/p/go.crypto/hkdf"
 * "code.google.com/p/gopass" - only needed by the `wrap` and `unwrap` commands
 
-`secure` has only been tested on linux.  Testing is planned for windows.  `secure` should function well under Windows as-is, except that the non-echoed password entry provided by `gopass` will not be available.
+`secure` has only been tested on linux.  
+
+To Do
+-----
+
+* Test `secure` on Windows and OS X.  `secure` should function well under Windows as-is, except that the non-echoed password entry provided by `gopass` will not be available.  OS X should be a similar situation.  Non-echoed passwords may work.
+* Host binary versions for all environments.
