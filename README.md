@@ -3,7 +3,9 @@ secure
 
 Package `secure` exports secure encryption and decryption functions and provides example commands.
 
-`secure` is designed to allow text passwords to be used as secure encryption keys.  This does not mitigate the need to select hard to guess passwords that are sufficiently long and that utilize a sufficiently diverse character set.  However, the text password is then processed by PBKDF2 to create a 32 byte pseudorandom masterkey.  A variable number of interations exceeding 250,000 slows down any brute force attack on the text password.  HKDF is then used to expand the master key into two cryptographically independent keys, one for encryption/decryption and one for MAC authentication.
+`secure` is designed to allow text passwords to be used as secure encryption keys.  This does not mitigate the need to select hard to guess passwords that are sufficiently long and that utilize a sufficiently diverse character set.  The text password is processed by PBKDF2 to create a 32 byte pseudorandom masterkey.  A variable number of interations (minimum 250,000 iterations) slows down any brute force attack on the text password.  HKDF is then used to expand the master key into two cryptographically independent keys, one for encryption/decryption and one for MAC authentication.
+
+Encryption/decryption is done using AES in CBC mode with a 256 bit key.  MAC authentication is performed by HMAC using SHA256. 
 
 Structure
 ---------
