@@ -127,6 +127,9 @@ func TestEncryptDecryptRandomData(t *testing.T) {
 		}
 		doEncryptDecrypt(t, tag, data, pw)
 	}
+	if !t.Failed() {
+		t.Logf("Random Data Tests Passed")
+	}
 }
 
 func dupBytes(src []byte) (dest []byte) {

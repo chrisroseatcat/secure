@@ -33,6 +33,9 @@ import (
 // relatively fast i5 laptop.
 const masterkeyGenBaseIterations = 250000
 
+// Limit for iterations to prevent DOS attack on decryption caused by specifying billions of iterations
+const masterkeyGenMaxIterations = 500000
+
 var errAuthFailure = fmt.Errorf("secure: Authentication failure")
 
 // aesCBCEncrypt performs CBC Mode encryption with the AES cipher.
@@ -448,6 +451,12 @@ func Decrypt(macedInput []byte, password []byte) (plaintext []byte, err error) {
 		fmt.Errorf("Read of iterations failed:", err)
 		return nil, err
 	}
+	
+	// Prevent DOS attack
+	if iterations > masterkeyGenMaxIterations {
+		return nil, errAuthFailure
+	}
+	
 	saltExpandKey := macedInput[len(macedInput)-64 : len(macedInput)-32]
 
 	// Derive cryptographically secure master key from password
