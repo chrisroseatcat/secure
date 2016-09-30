@@ -35,14 +35,14 @@ Requirements
 
 `secure` uses the following go packages from sub-repositories not included in the base `go` development environment.  They can be accessed with `go get`:
 
-* "code.google.com/p/go.crypto/pbkdf2"
-* "code.google.com/p/go.crypto/hkdf"
-* "code.google.com/p/gopass" - only needed by the `wrap` and `unwrap` commands
+* "golang.org/x/crypto/pbkdf2"
+* "golang.org/x/crypto/hkdf"
+* "github.com/howeyc/gopass" - only needed by the `wrap` and `unwrap` commands
 
-`secure` has only been tested on linux.  
+`secure` has only been tested on linux and Windows.  
 
 To Do
 -----
 
-* Test `secure` on Windows and OS X.  `secure` should function well under Windows as-is, except that the non-echoed password entry provided by `gopass` will not be available.  OS X should be a similar situation.  Non-echoed passwords may work.
+* Test secure on OS X.  `secure` functions on Windows and linux.
 * Host binary versions for all environments.
