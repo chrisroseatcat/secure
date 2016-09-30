@@ -4,7 +4,7 @@ package main
 
 import (
 	"bufio"
-	"code.google.com/p/gopass"
+	"github.com/howeyc/gopass"
 	"flag"
 	"fmt"
 	"github.com/chrisroseatcat/secure"
@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-const APP_VERSION = "1.0"
+const APP_VERSION = "1.1 relocated external libraries"
 
 const (
 	fileModeNoOverwrite = os.O_WRONLY | os.O_CREATE | os.O_EXCL
@@ -196,18 +196,20 @@ func run() error {
 			}
 			pw = []byte(pwstring[:len(pwstring)-1]) // Drop ending \n
 		} else {
-			pwString, err := gopass.GetPass("Enter Password: ")
+      fmt.Fprintln(os.Stderr, "Enter Password:")
+			pw, err = gopass.GetPasswdMasked()
 			if err != nil {
 				return fmt.Errorf("Reading password: %s", err)
 			}
-			pwString2, err := gopass.GetPass("Reenter Password: ")
+      fmt.Fprintln(os.Stderr, "Reenter Password:")
+			pw2, err := gopass.GetPasswdMasked()
 			if err != nil {
 				return fmt.Errorf("Reading reentered password: %s", err)
 			}
-			if pwString != pwString2 {
+			if string(pw) != string(pw2) {
 				return fmt.Errorf("Passwords do not match")
 			}
-			pw = []byte(pwString)
+			// pw = []byte(pwString)
 		}
 	} else {
 		pw = []byte(*pwStringFlag)

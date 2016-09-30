@@ -12,8 +12,8 @@ package secure
 
 import (
 	"bytes"
-	"code.google.com/p/go.crypto/hkdf"
-	"code.google.com/p/go.crypto/pbkdf2"
+	"golang.org/x/crypto/hkdf"
+	"golang.org/x/crypto/pbkdf2"
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/hmac"
