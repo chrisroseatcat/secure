@@ -17,7 +17,7 @@ The `secure` package exports the following functions:
 
 A `go test` source file is included to verify the correct operation of these functions.
 
-The `secure` package `commands` folder includes the following commands utilizing Encrypt and Decrypt:
+The `secure` package includes the following commands utilizing Encrypt and Decrypt:
 * `wrap` - encryption
 * `unwrap` - decryption
 
