@@ -28,13 +28,13 @@ This is a pipeline example verifying the basic functionality of these commands:
 
 `ls -al | ./wrap -pw foo -stdin | ./unwrap -pw foo -stdin`
 
-To encrypt file a into aEncrypted.blk with a double checked non-echoed password entry:
+To encrypt a file with double checked non-echoed password entry:
 
-`wrap a aEncrypted`
+`wrap input inputEncrypted`
 
 To decrypt the encrypted file with non-echoed password entry:
 
-`unwrap aEncrypted aDecrypted`
+`unwrap inputEncrypted inputOriginal`
 
 Please note that non-echoed passwords work under the Windows `cmd` shell and 
 Linux `bash`.  Alternate environments such as cygwin may fail to hide the password.
@@ -42,8 +42,9 @@ Linux `bash`.  Alternate environments such as cygwin may fail to hide the passwo
 Using the -blk parameter causes the `wrap` output file name to be the input file name with 
 a ".blk" added while -blk removes the ".blk" during `unwrap`:
 
-`wrap -blk input.txt` yields input.txt.blk
-`unwrap -blk input.txt.blk` yields input.txt
+`wrap -blk input.txt` yields `input.txt.blk`
+
+`unwrap -blk input.txt.blk` yields `input.txt`
 
 Neither command will overwrite an existing file unless -o is specified.
 
